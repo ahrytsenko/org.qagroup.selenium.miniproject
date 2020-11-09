@@ -36,22 +36,22 @@ public class CssDinerHomeWork {
                     "plate > apple",                // 14
                     "plate > orange:first-child",   // 15
                     "plate apple:only-child, plate pickle:only-child",  // 16
-                    "",                     // 17
-                    "",                     // 18
-                    "",                     // 19
-                    "",                     // 20
-                    "",                     // 21
-                    "",                     // 22
-                    "",                     // 23
-                    "",                     // 24
-                    "",                     // 25
-                    "",                     // 26
-                    "",                     // 27
-                    "",                     // 28
-                    "",                     // 29
-                    "",                     // 30
-                    "",                     // 31
-                    "",                     // 32
+                    "apple:last-child, pickle:last-child",              // 17
+                    "plate:nth-child(3)",           // 18
+                    "bento:nth-last-child(3)",      // 19
+                    "apple:first-of-type",          // 20
+                    "plate:nth-of-type(even)",      // 21
+                    "plate:nth-of-type(2n+3)",      // 22
+                    "plate apple:only-of-type",     // 23
+                    "orange:last-of-type, apple:last-of-type",         // 24
+                    "bento:empty",                  // 25
+                    "apple:not(.small)",            // 26
+                    "apple[for='Ethan'], plate[for='Alice'], bento[for='Clara']", // 27
+                    "plate[for='Sarah'], plate[for='Luke']",           // 28
+                    "bento[for='Vitaly']",          // 29
+                    "*[for^='Sa']",                 // 30
+                    "*[for$='ato']",                // 31
+                    "*[for*='obb']",                // 32
 
             };
 
@@ -80,8 +80,8 @@ public class CssDinerHomeWork {
         System.out.println("GAME: " + driver.getTitle());
         System.out.println("Let's start\n");
 
-        //for (int i = 1; i < solutions.length; i++) {
-        for (int i = 1; i < 17; i++) {
+        for (int i = 1; i < solutions.length; i++) {
+        //for (int i = 1; i < 17; i++) {
             // Display current task and solution
             System.out.println(driver.findElement(By.xpath("//span[@class='level-text']")).getText());
             wait.until(ExpectedConditions.attributeToBe(driver.findElement(By.xpath("//input[@type='text']")),
@@ -104,14 +104,19 @@ public class CssDinerHomeWork {
                     "class","completed"));
             Assert.assertTrue(driver.findElement(By.tagName("h1")).getAttribute("class").contains("completed"));
 
-            // Check if level changed
-            wait.until(ExpectedConditions.textToBe(By.xpath("//span[@class='level-text']"),
-                    "Level " + Integer.toString(i+1) + " of 32"));
-            Assert.assertEquals(driver.findElement(By.xpath("//span[@class='level-text']")).getText(),
-                    "Level " + Integer.toString(i+1) + " of 32");
-
-            System.out.println("OK\n");
-
+            // Check if level changed except the last one
+            if (i < solutions.length-1) {
+                wait.until(ExpectedConditions.textToBe(By.xpath("//span[@class='level-text']"),
+                        "Level " + (i + 1) + " of 32"));
+                Assert.assertEquals(driver.findElement(By.xpath("//span[@class='level-text']")).getText(),
+                        "Level " + (i + 1) + " of 32");
+                System.out.println("OK\n");
+            }
+            else {
+                wait.until(ExpectedConditions.presenceOfElementLocated(By.className("winner")));
+                System.out.println("OK\n");
+                System.out.println(driver.findElement(By.className("winner")).getText());
+            }
         }
     }
 }
