@@ -81,7 +81,7 @@ public class CssDinerHomeWork {
         System.out.println("Let's start\n");
 
         for (int i = 1; i < solutions.length; i++) {
-        //for (int i = 1; i < 17; i++) {
+
             // Display current task and solution
             System.out.println(driver.findElement(By.xpath("//span[@class='level-text']")).getText());
             wait.until(ExpectedConditions.attributeToBe(driver.findElement(By.xpath("//input[@type='text']")),
