@@ -14,7 +14,7 @@ public class InspectionGithub {
     By accountNameField = By.xpath("");
 
     public InspectionGithub checkTheAccountNameIs(String text) {
-        //Assert.assertEquals(text);
+        Assert.assertEquals(driver.findElement(accountNameField).getText(), text);
         return this;
     }
 

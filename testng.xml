@@ -2,9 +2,10 @@
 
 <suite name="Regression" verbose="1" >
 
-    <test name="TestLoginAndLogoutHomework01" ><classes><class name="TestLoginAndLogoutHomework01" /></classes></test>
-    <test name="TestElementPresence" ><classes><class name="TestElementPresence" /></classes></test>
-    <test name="MainPageSearchField" ><classes><class name="MainPageSearchField" /></classes></test>
+<!--    <test name="TestLoginAndLogoutHomework01" ><classes><class name="TestLoginAndLogoutHomework01" /></classes></test>-->
+<!--    <test name="TestElementPresence" ><classes><class name="TestElementPresence" /></classes></test>-->
+<!--    <test name="MainPageSearchField" ><classes><class name="MainPageSearchField" /></classes></test>-->
+    <test name="TestJuiceSite" ><classes><class name="TestJuiceSite" /></classes></test>
 
 <!--    <test name="Regression1">-->
 <!--        <classes>-->
