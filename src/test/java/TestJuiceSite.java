@@ -38,9 +38,13 @@ public class TestJuiceSite {
     }
 
     @Test(priority = 1)
+    public void closeWelcomeBanner() {
+        loginPage.closeBanner();
+    }
+
+    @Test(priority = 2)
     public void testForSQLInjectionOnLoginPage() {
-        loginPage.closeBanner()
-                .clickNavbarAccount()
+        loginPage.clickNavbarAccount()
                 .clickNavbarLoginButton()
                 .waitForLoginWindow(URL)
                 .fillEmailField("' OR 1=1 --")
@@ -55,8 +59,7 @@ public class TestJuiceSite {
 
     @Test(priority = 3)
     public void testForValidCredentialsLoginPage() {
-        loginPage.closeBanner()
-                .clickNavbarAccount()
+        loginPage.clickNavbarAccount()
                 .clickNavbarLoginButton()
                 .waitForLoginWindow(URL)
                 .fillEmailField("email@domain.example")
